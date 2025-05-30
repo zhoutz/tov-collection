@@ -67,6 +67,7 @@ plt.ylabel("# fn eval", color="r")
 plt.yticks(color="r")
 plt.xscale("log")
 
+plt.suptitle(f"Error and Time Analysis for {s}", fontsize=14)
 plt.tight_layout()
 plt.subplots_adjust(hspace=0)
 
