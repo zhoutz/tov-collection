@@ -74,6 +74,6 @@ plt.subplots_adjust(hspace=0)
 if True:
     plt.show()
 else:
-    saved_fname = f"output/{s}/err_time.pdf"
+    saved_fname = f"output/{s}.svg"
     plt.savefig(saved_fname)
     print(f"Saved to ./{saved_fname}")
