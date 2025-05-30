@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-data = np.loadtxt("output/gt_mrt/295.txt", skiprows=1)
+data = np.loadtxt("output/inte_r/0/150.txt", skiprows=1)
 m = data[:, 0]
 r = data[:, 1]
 y = data[:, 2]
@@ -45,11 +45,10 @@ else:
     )
 
 plt.figure(figsize=(12, 4))
-# fig,axs = plt.subplots(3, 1, figsize=(8, 6))
 plt.subplot(1, 3, 1)
 plt.plot(r, m, ".", ms=1)
 plt.xlabel("Radius (km)")
-plt.ylabel("Mass (M_sun)")
+plt.ylabel("Mass (M$\\odot$)")
 
 plt.subplot(1, 3, 2)
 plt.plot(r, Lamb, ".", ms=1)
@@ -59,7 +58,7 @@ plt.ylim(0, 1000)
 
 plt.subplot(1, 3, 3)
 plt.plot(m, Lamb, ".", ms=1)
-plt.xlabel("Mass (M_sun)")
+plt.xlabel("Mass (M$\\odot$)")
 plt.ylabel(r"$\Lambda$")
 plt.ylim(0, 1000)
 
