@@ -1,0 +1,11 @@
+.DS_Store
+compile_commands.json
+
+*.pdf
+
+build/
+.cache/
+.xmake/
+__pycache__/
+ext/
+output/
