@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <cmath>
 
 inline std::vector<double> linspace(double start, double end, int num_points) {
   std::vector<double> vec(num_points);
