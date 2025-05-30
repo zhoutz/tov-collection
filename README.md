@@ -14,5 +14,5 @@ python3 p/p_err_time.py inte_r
 Substitute `inte_r` with other algorithm name (`inte_p`) to run the benchmark or plot for that specific algorithm.
 
 # Documentation
-See [doc](https://typst.app/project/rjYAvMZ6LKh7AiPwIYLLPv)
+See the [doc](https://typst.app/project/rjYAvMZ6LKh7AiPwIYLLPv)
 for derivations and explanations of each algorithm.
