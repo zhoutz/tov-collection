@@ -3,6 +3,7 @@ compile_commands.json
 
 *.pdf
 
+.cache/
 __pycache__/
 build/
 output/
