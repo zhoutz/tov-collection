@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import sys
 
-
 s = sys.argv[1]
 src_dir = Path(f"output/{s}")
 
