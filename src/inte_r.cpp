@@ -8,14 +8,15 @@
 double rtol;
 
 auto c_MR_point(TOV_mrt_r &tov, double e_c) {
-  double r0 = 1e-6;
-  double dr = 1e-4;
   double p_c = tov.eos.p_of_e(e_c);
   double y_c = 2.;
 
+  double r0 = 1e-6;
   double p0 = p_c;
   double m0 = C2 / 3. * r0 * r0 * r0 * e_c;
   double y0 = y_c;
+
+  double dr = 1e-4;
 
   d3 pmy{p0, m0, y0};
   d3 dpmy_dr;
