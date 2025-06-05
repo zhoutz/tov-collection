@@ -70,9 +70,9 @@ plt.suptitle(f"Error and Time Analysis for {s}", fontsize=14)
 plt.tight_layout()
 plt.subplots_adjust(hspace=0)
 
-if True:
-    plt.show()
-else:
-    saved_fname = f"output/{s}.svg"
+if len(sys.argv) > 2:
+    saved_fname = f"output/{s}.{sys.argv[2]}"
     plt.savefig(saved_fname)
-    print(f"Saved to ./{saved_fname}")
+    print(f"Saved to {saved_fname}")
+else:
+    plt.show()
