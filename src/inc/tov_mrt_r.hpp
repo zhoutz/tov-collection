@@ -8,7 +8,7 @@ using d3 = std::array<double, 3>;
 extern unsigned g_cnt;
 
 struct TOV_mrt_r {
-  EOS_epcs &eos;
+  EOS &eos;
 
   void operator()(double r, d3 const &pmy, d3 &dpmy_dr) {
     ++g_cnt;

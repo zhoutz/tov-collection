@@ -6,7 +6,7 @@ import sys
 
 
 s = sys.argv[1]
-in_dir = Path("compose/eos/epcs")
+in_dir = Path("compose/eos/epch")
 out_dir = Path(f"output/{s}")
 
 subprocess.run(f"rm -rf {str(out_dir)}", shell=True)

@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
   std::string out_fname = argv[2];
   rtol = std::stod(argv[3]);
 
-  EOS_epcs eos;
+  EOS eos;
   eos.read_file_natual(in_fname);
   TOV_mrt_p tov{eos};
   bench_c_MR_point(tov, c_MR_point, out_fname);

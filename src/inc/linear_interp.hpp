@@ -64,11 +64,22 @@ struct LinearInterp {
     return std::max(0, std::min(n - 2, jl));
   }
 
-  static double linterp(double x, double x1, double x2, double y1, double y2) {
+  static double lin_interp(double x, double x1, double x2, double y1,
+                           double y2) {
     if (x1 == x2) {
       return y1;
     } else {
       return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1);
+    }
+  }
+
+  static double log_interp(double x, double x1, double x2, double y1,
+                           double y2) {
+    if (x1 == x2) {
+      return y1;
+    } else {
+      double k = std::log(y2 / y1) / std::log(x2 / x1);
+      return y1 * std::pow(x / x1, k);
     }
   }
 };
