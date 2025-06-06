@@ -7,7 +7,7 @@ using d3 = std::array<double, 3>;
 
 extern unsigned g_cnt;
 
-struct TOV_mrt_h {
+struct TOV_uvy_h {
   EOS &eos;
 
   void operator()(double h, d3 const &uvy, d3 &duvy_dh) {
@@ -22,11 +22,13 @@ struct TOV_mrt_h {
     double v = uvy[1];
     double y = uvy[2];
 
-    double dudh = -2. * u * (C1 - 2. * v) / (v + C2 * u * p);
-    double dvdh = -(C1 - 2. * v) * (-v + C2 * u * e) / (v + C2 * u * p);
+    double deno = 1. / (v + C2 * u * p);
+
+    double dudh = -2. * u * (C1 - 2. * v) * deno;
+    double dvdh = (C1 - 2. * v) * (v - C2 * u * e) * deno;
     double dydh = (C2 * u * ((3. + kappa) * (e + p) - y * (e + 3. * p)) -
-                   2. * v * y * (2. + y) + C1 * (y * y + y - 6.)) /
-                  (v + C2 * u * p);
+                   2. * v * y * (2. + y) + C1 * (y * y + y - 6.)) *
+                  deno;
 
     duvy_dh[0] = dudh;
     duvy_dh[1] = dvdh;

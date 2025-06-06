@@ -1,4 +1,4 @@
-executables := inte_p inte_r inte_h
+executables := inte_p inte_r inte_h inte_xi inte_uvy_p
 headers := $(wildcard src/inc/*)
 
 CXX = clang++

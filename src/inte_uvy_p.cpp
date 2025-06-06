@@ -2,30 +2,28 @@
 #include "constants.hpp"
 #include "eos.hpp"
 #include "stepperdopr5.hpp"
-#include "tov_uvy_h.hpp"
+#include "tov_uvy_p.hpp"
 #include <array>
 
 double rtol;
 
-auto c_MR_point(TOV_uvy_h &tov, double e_c) {
+auto c_MR_point(TOV_uvy_p &tov, double e_c) {
   double r0 = 1e-6;
   double p0 = tov.eos.p_of_e(e_c);
-  double h0 = tov.eos.h_of_p(p0);
   double m0 = C2 / 3. * r0 * r0 * r0 * e_c;
   double u0 = r0 * r0;
   double v0 = m0 / r0;
   double y0 = 2.;
-  double dh0 = -h0 * 1e-8;
-  double h_boundary = tov.eos.h_of_p(p_boundary);
+  double dp0 = -p0 * 1e-8;
 
   d3 uvy{u0, v0, y0};
-  d3 duvy_dh;
-  tov(h0, uvy, duvy_dh);
+  d3 duvy_dp;
+  tov(p0, uvy, duvy_dp);
 
   StepperDopr5<3, decltype(tov)> stepper(0, rtol);
-  stepper.set_init(uvy, duvy_dh, h0, dh0);
+  stepper.set_init(uvy, duvy_dp, p0, dp0);
 
-  stepper.integrate_to(h_boundary, tov);
+  stepper.integrate_to(p_boundary, tov);
 
   double ret_r = std::sqrt(stepper.y[0]);
   double ret_m = ret_r * stepper.y[1];
@@ -45,6 +43,6 @@ int main(int argc, char **argv) {
 
   EOS eos;
   eos.read_file_natual(in_fname);
-  TOV_uvy_h tov{eos};
+  TOV_uvy_p tov{eos};
   bench_c_MR_point(tov, c_MR_point, out_fname);
 }

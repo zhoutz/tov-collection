@@ -142,6 +142,10 @@ template <int n, class F> struct StepperDopr5 {
       scale = std::max(safe * std::pow(err, -alpha), minscale);
       h *= scale;
       reject = true;
+#if 0
+      printf("rejecting step, err = %g, scale = %g, h = %g, x=%g\n", err, scale,
+             h, x);
+#endif
       return false;
     }
   }

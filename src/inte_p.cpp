@@ -20,11 +20,11 @@ auto c_MR_point(TOV_mrt_p &tov, double e_c) {
   double dp = -p0 * 1e-14;
 
   d3 wmy{w0, m0, y0};
-  d3 dwmy_dr;
-  tov(p0, wmy, dwmy_dr);
+  d3 dwmy_dp;
+  tov(p0, wmy, dwmy_dp);
 
   StepperDopr5<3, decltype(tov)> stepper(0, rtol);
-  stepper.set_init(wmy, dwmy_dr, p0, dp);
+  stepper.set_init(wmy, dwmy_dp, p0, dp);
 
   stepper.integrate_to(p_boundary, tov);
 
