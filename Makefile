@@ -1,7 +1,7 @@
 executables := inte_p inte_r inte_h inte_xi inte_uvy_p
 headers := $(wildcard src/inc/*)
 
-CXX = clang++
+CXX ?= clang++
 CXXFLAGS = -std=c++20 -Isrc/inc -O3 -march=native -ffast-math
 
 
