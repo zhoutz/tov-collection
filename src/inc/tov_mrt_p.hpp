@@ -24,11 +24,12 @@ struct TOV_mrt_p {
     double y = wmy[2];
     double r = std::cbrt(w);
 
-    double dwdp = -3. * w * (C1 * r - 2. * m) / ((e + p) * (m + C2 * w * p));
+    double deno = 1. / ((e + p) * (m + C2 * w * p));
+    double dwdp = -3. * w * (C1 * r - 2. * m) * deno;
     double dmdp = C2 * e / 3. * dwdp;
     double dydp = -(2. * m * y * (y + 2.) - C1 * r * (y * y + y - 6.) +
-                    C2 * w * (y * (e + 3. * p) - (e + p) * (3. + kappa))) /
-                  ((e + p) * (m + C2 * w * p));
+                    C2 * w * (y * (e + 3. * p) - (e + p) * (3. + kappa))) *
+                  deno;
 
     dwmy_dp[0] = dwdp;
     dwmy_dp[1] = dmdp;

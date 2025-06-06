@@ -23,12 +23,13 @@ struct TOV_mrt_r {
     double m = pmy[1];
     double y = pmy[2];
 
-    double dpdr = -(e + p) * (m + C2 * r * r * r * p) / (r * (C1 * r - 2. * m));
+    double deno = 1. / (r * (C1 * r - 2. * m));
+    double dpdr = -(e + p) * (m + C2 * r * r * r * p) * deno;
     double dmdr = C2 * r * r * e;
     double dydr =
         (2. * m * y * (y + 2.) - C1 * r * (y * y + y - 6.) +
-         C2 * r * r * r * (y * (e + 3. * p) - (e + p) * (3. + kappa))) /
-        (r * (C1 * r - 2. * m));
+         C2 * r * r * r * (y * (e + 3. * p) - (e + p) * (3. + kappa))) *
+        deno;
 
     dpmy_dr[0] = dpdr;
     dpmy_dr[1] = dmdr;

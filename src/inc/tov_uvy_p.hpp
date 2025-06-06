@@ -23,7 +23,6 @@ struct TOV_uvy_p {
     double y = uvy[2];
 
     double deno = 1. / ((e + p) * (v + C2 * u * p));
-
     double dudp = -2. * u * (C1 - 2. * v) * deno;
     double dvdp = (C1 - 2. * v) * (v - C2 * u * e) * deno;
     double dydp = (C2 * u * ((3. + kappa) * (e + p) - y * (e + 3. * p)) -

@@ -25,13 +25,13 @@ struct TOV_mrt_xi {
     double y = wmy[2];
     double r = std::cbrt(w);
 
-    double dwdxi =
-        -3. * w * p * (C1 * r - 2. * m) / ((e + p) * (m + C2 * w * p));
+    double deno = 1. / ((e + p) * (m + C2 * w * p));
+    double dwdxi = -3. * w * p * (C1 * r - 2. * m) * deno;
     double dmdxi = C2 * e / 3. * dwdxi;
     double dydxi = -p *
                    (2. * m * y * (y + 2.) - C1 * r * (y * y + y - 6.) +
-                    C2 * w * (y * (e + 3. * p) - (e + p) * (3. + kappa))) /
-                   ((e + p) * (m + C2 * w * p));
+                    C2 * w * (y * (e + 3. * p) - (e + p) * (3. + kappa))) *
+                   deno;
 
     dwmy_dxi[0] = dwdxi;
     dwmy_dxi[1] = dmdxi;
